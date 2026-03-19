@@ -4,29 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MDCLTS | Tienda Oficial</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;600&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
         
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            /* FONTO ACTUALIZADO */
+            /* FONDO DE GRAFITI */
             background-image: url('https://i.ibb.co/pvWW7TWH/1773920823184.png');
             background-attachment: fixed;
             background-size: cover;
             background-position: center;
-            color: #000000;
             margin: 0;
             padding: 0;
             scroll-behavior: smooth;
         }
 
-        /* Capa ligera para que el fondo no sature visualmente */
+        /* Capa para suavizar el fondo y mejorar legibilidad */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.4); /* Ajusta este 0.4 si quieres más o menos transparencia */
+            background: rgba(255, 255, 255, 0.3); 
             z-index: -1;
         }
 
@@ -53,7 +52,7 @@
             z-index: 1001;
             top: 0;
             right: 0;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.98);
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;
@@ -63,37 +62,97 @@
         .sidenav a {
             padding: 15px 25px;
             text-decoration: none;
-            font-size: 20px;
+            font-size: 18px;
             color: #333;
             display: block;
             text-transform: uppercase;
-            font-weight: bold;
+            font-family: 'Cormorant Upright', serif;
+            font-weight: 600;
+            letter-spacing: 2px;
         }
 
         /* --- HEADER --- */
         header { 
             text-align: center; 
-            padding: 80px 20px 40px 20px; 
+            padding: 80px 20px 30px 20px; 
         }
         
         .header-title {
-            font-family: 'Playball', cursive;
-            font-size: 5em;
+            font-family: 'Great Vibes', cursive;
+            font-size: 5.5em;
+            font-weight: bold;
             color: #000;
             margin: 0;
-            text-shadow: 2px 2px 0px #fff; /* Sombra blanca para resaltar sobre el grafiti */
+            text-shadow: 3px 3px 0px rgba(255,255,255,0.8);
         }
 
-        /* --- SECCIONES --- */
+        /* --- SECCIÓN DESCUENTO --- */
+        .discount-section {
+            padding: 10px 20px 40px 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .discount-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #000;
+            padding: 25px;
+            text-align: center;
+            border-radius: 0px;
+            box-shadow: 8px 8px 0px #000; /* Estilo Urban */
+        }
+
+        .discount-card h3 {
+            font-family: 'Cormorant Upright', serif;
+            margin: 0;
+            letter-spacing: 2px;
+            font-size: 1.4em;
+        }
+
+        .login-sim {
+            display: flex;
+            margin-top: 15px;
+            gap: 5px;
+        }
+
+        .login-sim input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #000;
+            outline: none;
+        }
+
+        .login-sim button {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 0 15px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.7em;
+        }
+
+        .coupon-box {
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px dashed #000;
+            background: #f9f9f9;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* --- SECCIONES DE MARCAS --- */
         .section-title {
             text-align: center;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.9);
             padding: 15px;
-            margin-top: 40px;
+            margin-top: 20px;
             letter-spacing: 8px;
             color: #fff;
             font-weight: bold;
             text-transform: uppercase;
+            font-family: 'Cormorant Upright', serif;
         }
 
         /* --- GRID DE PRODUCTOS --- */
@@ -107,26 +166,24 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.9); /* Fondo blanco traslúcido */
-            border: 1px solid #eee;
-            border-radius: 15px; /* Bordes redondeados más modernos */
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
             text-align: center;
             padding-bottom: 30px;
             transition: 0.3s;
-            backdrop-filter: blur(5px); /* Efecto de desenfoque detrás de la tarjeta */
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
         }
 
         .card:hover { 
             transform: translateY(-10px);
-            border-color: #000;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
         .img-box {
             width: 100%;
-            height: 350px;
+            height: 380px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -141,33 +198,35 @@
         }
 
         .price { 
-            font-size: 1.5em; 
+            font-size: 1.6em; 
             font-weight: bold; 
             margin: 15px 0; 
-            color: #000;
+            font-family: 'Cormorant Upright', serif;
         }
         
         .btn-wa {
             background: #000;
             color: #fff;
             text-decoration: none;
-            padding: 12px 35px;
+            padding: 12px 40px;
             font-weight: bold;
             display: inline-block;
             text-transform: uppercase;
             font-size: 0.8em;
-            border-radius: 5px;
+            letter-spacing: 2px;
             transition: 0.3s;
         }
 
-        .btn-wa:hover {
-            background: #333;
-            letter-spacing: 1px;
+        .btn-wa:hover { background: #444; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; } to { opacity: 1; }
         }
 
         @media (max-width: 600px) {
-            .header-title { font-size: 3.5em; }
+            .header-title { font-size: 3.8em; }
             .container { grid-template-columns: 1fr; }
+            .login-sim { flex-direction: column; }
         }
     </style>
 </head>
@@ -181,11 +240,26 @@
         <a href="#monastery" onclick="closeNav()">MONASTERY</a>
     </div>
 
-    <div class="menu-btn" onclick="openNav()">MARCAS ☰</div>
+    <div class="menu-btn" onclick="openNav()">MENU ☰</div>
 
     <header>
         <h1 class="header-title">MDCLTS</h1>
     </header>
+
+    <div class="discount-section">
+        <div class="discount-card">
+            <h3>🎁 ¡REGALO EXCLUSIVO!</h3>
+            <p style="font-size: 0.9em;">Déjanos tu correo y obtén <b>10% de descuento</b>.</p>
+            <div class="login-sim">
+                <input type="email" id="userEmail" placeholder="Tu correo electrónico" required>
+                <button onclick="generateCoupon()">OBTENER</button>
+            </div>
+            <div id="couponResult" class="coupon-box">
+                <p>Usa el código: <b style="color: #d9534f; font-size: 1.3em;">MDCLTS10</b></p>
+                <small>Muéstralo al vendedor por WhatsApp.</small>
+            </div>
+        </div>
+    </div>
 
     <div id="nike" class="section-title">NIKE</div>
     <div class="container">
@@ -242,6 +316,15 @@
     <script>
         function openNav() { document.getElementById("mySidenav").style.width = "250px"; }
         function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
+
+        function generateCoupon() {
+            let email = document.getElementById('userEmail').value;
+            if(email.includes('@') && email.length > 5) {
+                document.getElementById('couponResult').style.display = 'block';
+            } else {
+                alert("Por favor, ingresa un correo electrónico válido.");
+            }
+        }
     </script>
 </body>
 </html>
