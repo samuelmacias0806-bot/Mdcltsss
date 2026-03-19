@@ -3,141 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MDCLTS - Tienda de Camisetas</title>
+    <title>MDCLTS | Premium Store</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #000000; /* Fondo negro total para que resalten las fotos */
-            color: #ffffff;
-            margin: 0;
-            padding: 10px;
+        :root {
+            --fondo: #2c2c2c; /* Gris oscuro profesional */
+            --tarjeta: #1e1e1e;
+            --acento: #25d366;
         }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--fondo);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- MENÚ LATERAL (HAMBURGUESA) --- */
+        .menu-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1000;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 15px;
+            border-radius: 5px;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1001;
+            top: 0;
+            right: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover { color: white; }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+        }
+
+        /* --- CABECERA Y MÚSICA --- */
         header {
             text-align: center;
-            padding: 20px 0;
+            padding: 40px 20px;
         }
-        #logo {
-            max-width: 180px;
-            height: auto;
-            border-radius: 50%; /* Por si el logo es circular */
+
+        #logo { max-width: 180px; }
+
+        .music-player {
+            margin: 10px 0;
+            background: #111;
+            padding: 10px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
+
+        /* --- PRODUCTOS (VERTICALES Y GRANDES) --- */
         .container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Fotos grandes */
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
+
         .producto {
-            background-color: #111111;
-            border: 1px solid #222;
-            border-radius: 15px;
+            background-color: var(--tarjeta);
+            border-radius: 0px; /* Estilo cuadrado vertical más moderno */
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
+
         .producto img {
-            width: 100%; /* La foto ocupa todo el ancho del cuadro */
-            height: 350px; /* Altura fija para que todas se vean iguales */
-            object-fit: cover; /* Recorta la imagen para que llene el espacio sin deformarse */
-        }
-        .info {
-            padding: 15px;
             width: 100%;
+            height: 500px; /* Vertical y grande */
+            object-fit: cover;
         }
-        .producto h2 {
-            margin: 10px 0;
-            font-size: 1.5em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+
+        .info {
+            padding: 20px;
+            text-align: center;
         }
+
         .precio {
-            font-size: 1.3em;
-            color: #25d366;
+            font-size: 1.4em;
+            color: var(--acento);
             font-weight: bold;
-            margin-bottom: 15px;
         }
+
         .whatsapp-button {
-            background-color: #25d366;
-            color: #fff;
+            display: block;
+            background: var(--acento);
+            color: black;
             text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 50px;
+            padding: 15px;
             font-weight: bold;
-            display: inline-block;
-            transition: transform 0.2s;
-        }
-        .whatsapp-button:hover {
-            transform: scale(1.05);
+            text-transform: uppercase;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
 
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">NIKE</a>
+        <a href="#">HUGO BOSS</a>
+        <a href="#">CLEMONT</a>
+        <a href="#">MONASTERY</a>
+    </div>
+
+    <span class="menu-btn" onclick="openNav()">&#9776;</span>
+
     <header>
         <img src="https://i.ibb.co/bgL4xQ9Z/1773899219442.png" alt="MDCLTS Logo" id="logo">
+        <br>
+        <div class="music-player">
+            <span>🎵 Música</span>
+            <audio id="bgMusic" loop>
+                <source src="musica.mp3" type="audio/mpeg">
+            </audio>
+            <button onclick="toggleMusic()" id="musicBtn" style="cursor:pointer; border:none; background:var(--acento); border-radius:20px; padding:5px 15px;">PLAY</button>
+        </div>
     </header>
 
     <div class="container">
-
-        <div class="producto">
+        <div class="producto" id="nike">
             <img src="https://i.ibb.co/PsqGzYpk/IMG-20260223-WA0001.jpg" alt="Nike Urban Light">
             <div class="info">
-                <h2>Nike Urban Light</h2>
+                <h2>NIKE URBAN LIGHT</h2>
                 <p class="precio">$89.990 COP</p>
-                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Nike%20Urban%20Light" class="whatsapp-button" target="_blank">Comprar por WhatsApp</a>
+                <a href="https://wa.me/XXXXXXXXXXX?text=Me%20interesa%20la%20Nike%20Urban" class="whatsapp-button">Comprar</a>
             </div>
         </div>
 
-        <div class="producto">
-            <img src="https://i.ibb.co/7JktqhHC/IMG-20260318-WA0146.jpg" alt="Hugo Boss Red Edition">
-            <div class="info">
-                <h2>Hugo Boss Red Edition</h2>
-                <p class="precio">$89.990 COP</p>
-                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Hugo%20Boss%20Red%20Edition" class="whatsapp-button" target="_blank">Comprar por WhatsApp</a>
-            </div>
         </div>
 
-        <div class="producto">
-            <img src="https://i.ibb.co/Y4v51Sq4/IMG-20260318-WA0142.jpg" alt="Clemont Verita Eterna">
-            <div class="info">
-                <h2>Clemont Verita Eterna</h2>
-                <p class="precio">$89.990 COP</p>
-                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Clemont%20Verita%20Eterna" class="whatsapp-button" target="_blank">Comprar por WhatsApp</a>
-            </div>
-        </div>
+    <script>
+        function openNav() { document.getElementById("mySidenav").style.width = "250px"; }
+        function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
 
-        <div class="producto">
-            <img src="https://i.ibb.co/WvrqtY3H/IMG-20260318-WA0147.jpg" alt="Nike Silhouette Negra">
-            <div class="info">
-                <h2>Nike Silhouette Negra</h2>
-                <p class="precio">$89.990 COP</p>
-                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Nike%20Silhouette%20Negra" class="whatsapp-button" target="_blank">Comprar por WhatsApp</a>
-            </div>
-        </div>
-
-        <div class="producto">
-            <img src="https://i.ibb.co/N6r0DNsb/IMG-20260318-WA0139.jpg" alt="Clemont Heart Flame">
-            <div class="info">
-                <h2>Clemont Heart Flame</h2>
-                <p class="precio">$89.990 COP</p>
-                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Clemont%20Heart%20Flame" class="whatsapp-button" target="_blank">Comprar por WhatsApp</a>
-            </div>
-        </div>
-
-        <div class="producto">
-            <img src="https://i.ibb.co/SwmwRN9D/IMG-20260306-WA0130.jpg" alt="Monastery">
-            <div class="info">
-                <h2>Monastery</h2>
-                <p class="precio">$89.990 COP</p>
-                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Monastery" class="whatsapp-button" target="_blank">Comprar por WhatsApp</a>
-            </div>
-        </div>
-
-    </div>
+        var music = document.getElementById("bgMusic");
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                document.getElementById("musicBtn").innerHTML = "MUTE";
+            } else {
+                music.pause();
+                document.getElementById("musicBtn").innerHTML = "PLAY";
+            }
+        }
+    </script>
 
 </body>
 </html>
