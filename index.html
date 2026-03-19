@@ -10,7 +10,6 @@
         
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            /* FONDO DE GRAFITI */
             background-image: url('https://i.ibb.co/pvWW7TWH/1773920823184.png');
             background-attachment: fixed;
             background-size: cover;
@@ -20,7 +19,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Capa para suavizar el fondo y mejorar legibilidad */
         body::before {
             content: "";
             position: fixed;
@@ -74,7 +72,7 @@
         /* --- HEADER --- */
         header { 
             text-align: center; 
-            padding: 80px 20px 30px 20px; 
+            padding: 80px 20px 10px 20px; 
         }
         
         .header-title {
@@ -88,7 +86,7 @@
 
         /* --- SECCIÓN DESCUENTO --- */
         .discount-section {
-            padding: 10px 20px 40px 20px;
+            padding: 0px 20px 40px 20px;
             max-width: 500px;
             margin: 0 auto;
         }
@@ -99,7 +97,7 @@
             padding: 25px;
             text-align: center;
             border-radius: 0px;
-            box-shadow: 8px 8px 0px #000; /* Estilo Urban */
+            box-shadow: 8px 8px 0px #000;
         }
 
         .discount-card h3 {
@@ -135,24 +133,47 @@
 
         .coupon-box {
             margin-top: 15px;
-            padding: 10px;
+            padding: 15px;
             border: 1px dashed #000;
             background: #f9f9f9;
             display: none;
             animation: fadeIn 0.5s ease;
         }
 
-        /* --- SECCIONES DE MARCAS --- */
-        .section-title {
+        .btn-copy {
+            background: #444;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 0.8em;
+            text-transform: uppercase;
+        }
+
+        /* --- FILTROS MINIMALISTAS --- */
+        .filter-container {
             text-align: center;
-            background: rgba(0, 0, 0, 0.9);
-            padding: 15px;
-            margin-top: 20px;
-            letter-spacing: 8px;
-            color: #fff;
+            margin: 20px 0 30px 0;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid #000;
+            padding: 10px 25px;
+            margin: 5px;
+            cursor: pointer;
+            font-family: 'Cormorant Upright', serif;
             font-weight: bold;
             text-transform: uppercase;
-            font-family: 'Cormorant Upright', serif;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            border-radius: 0;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: #000;
+            color: #fff;
         }
 
         /* --- GRID DE PRODUCTOS --- */
@@ -160,7 +181,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            padding: 40px 20px;
+            padding: 0px 20px 40px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -174,6 +195,12 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             backdrop-filter: blur(5px);
+            display: none; /* Oculto por defecto para el filtro */
+        }
+
+        /* Clase para mostrar productos filtrados */
+        .show {
+            display: block;
         }
 
         .card:hover { 
@@ -217,16 +244,13 @@
             transition: 0.3s;
         }
 
-        .btn-wa:hover { background: #444; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; } to { opacity: 1; }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         @media (max-width: 600px) {
             .header-title { font-size: 3.8em; }
             .container { grid-template-columns: 1fr; }
             .login-sim { flex-direction: column; }
+            .filter-btn { padding: 10px 15px; font-size: 0.8em; }
         }
     </style>
 </head>
@@ -249,81 +273,157 @@
     <div class="discount-section">
         <div class="discount-card">
             <h3>🎁 ¡REGALO EXCLUSIVO!</h3>
-            <p style="font-size: 0.9em;">Déjanos tu correo y obtén <b>10% de descuento</b>.</p>
+            <p style="font-size: 0.9em;">Déjanos tu correo y obtén un <b>código aleatorio</b> del 10% OFF.</p>
             <div class="login-sim">
                 <input type="email" id="userEmail" placeholder="Tu correo electrónico" required>
                 <button onclick="generateCoupon()">OBTENER</button>
             </div>
             <div id="couponResult" class="coupon-box">
-                <p>Usa el código: <b style="color: #d9534f; font-size: 1.3em;">MDCLTS10</b></p>
-                <small>Muéstralo al vendedor por WhatsApp.</small>
-            </div>
+                </div>
         </div>
     </div>
 
-    <div id="nike" class="section-title">NIKE</div>
+    <div class="filter-container">
+        <button class="filter-btn active" onclick="filterSelection('all')">Todo</button>
+        <button class="filter-btn" onclick="filterSelection('camisetas')">Camisetas</button>
+        <button class="filter-btn" onclick="filterSelection('gorras')">Gorras</button>
+    </div>
+
     <div class="container">
-        <div class="card">
+
+        <div class="card camisetas show">
             <div class="img-box"><img src="https://i.ibb.co/PsqGzYpk/IMG-20260223-WA0001.jpg"></div>
             <h3>NIKE URBAN LIGHT</h3>
             <p class="price">$89.990</p>
             <a href="https://wa.me/573018942801?text=Hola,%20me%20interesa%20la%20Nike%20Urban%20Light" class="btn-wa">COMPRAR</a>
         </div>
-        <div class="card">
+
+        <div class="card camisetas show">
             <div class="img-box"><img src="https://i.ibb.co/WvrqtY3H/IMG-20260318-WA0147.jpg"></div>
             <h3>NIKE SILHOUETTE</h3>
             <p class="price">$89.990</p>
             <a href="https://wa.me/573018942801?text=Hola,%20me%20interesa%20la%20Nike%20Silhouette" class="btn-wa">COMPRAR</a>
         </div>
-    </div>
 
-    <div id="boss" class="section-title">HUGO BOSS</div>
-    <div class="container">
-        <div class="card">
+        <div class="card camisetas show">
             <div class="img-box"><img src="https://i.ibb.co/7JktqhHC/IMG-20260318-WA0146.jpg"></div>
             <h3>HUGO BOSS RED</h3>
             <p class="price">$89.990</p>
             <a href="https://wa.me/573018942801?text=Hola,%20me%20interesa%20la%20Hugo%20Boss%20Red" class="btn-wa">COMPRAR</a>
         </div>
-    </div>
 
-    <div id="clemont" class="section-title">CLEMONT</div>
-    <div class="container">
-        <div class="card">
+        <div class="card camisetas show">
             <div class="img-box"><img src="https://i.ibb.co/Y4v51Sq4/IMG-20260318-WA0142.jpg"></div>
-            <h3>VERITA ETERNA</h3>
+            <h3>VERITA ETERNA (Clemont)</h3>
             <p class="price">$89.990</p>
             <a href="https://wa.me/573018942801?text=Hola,%20me%20interesa%20la%20Verita%20Eterna" class="btn-wa">COMPRAR</a>
         </div>
-        <div class="card">
-            <div class="img-box"><img src="https://i.ibb.co/N6r0DNsb/IMG-20260318-WA0139.jpg"></div>
-            <h3>HEART FLAME</h3>
-            <p class="price">$89.990</p>
-            <a href="https://wa.me/573018942801?text=Hola,%20me%20interesa%20la%20Heart%20Flame" class="btn-wa">COMPRAR</a>
-        </div>
-    </div>
 
-    <div id="monastery" class="section-title">MONASTERY</div>
-    <div class="container">
-        <div class="card">
+        <div class="card gorras show">
             <div class="img-box"><img src="https://i.ibb.co/SwmwRN9D/IMG-20260306-WA0130.jpg"></div>
             <h3>MONASTERY BLACK</h3>
             <p class="price">$89.990</p>
             <a href="https://wa.me/573018942801?text=Hola,%20me%20interesa%20la%20Monastery%20Black" class="btn-wa">COMPRAR</a>
         </div>
+
+        <div class="card gorras show">
+            <div class="img-box"><img src="https://i.ibb.co/N6r0DNsb/IMG-20260318-WA0139.jpg"></div>
+            <h3>HEART FLAME (Clemont)</h3>
+            <p class="price">$89.990</p>
+            <a href="https://wa.me/573018942801?text=Hola,%20me%20interesa%20la%20Heart%20Flame" class="btn-wa">COMPRAR</a>
+        </div>
+
+        <div class="card gorras show">
+            <div class="img-box"><img src="https://ibb.co/58H8t0Z"></div>
+            <h3>MONASTERY WHITE</h3>
+            <p class="price">$89.990</p>
+            <a href="https://wa.me/573018942801?text=Hola,%20me%20interesa%20la%20Monastery%20White" class="btn-wa">COMPRAR</a>
+        </div>
+        
+        <div class="card gorras show">
+            <div class="img-box"><img src="https://ibb.co/q5L3t30"></div>
+            <h3>NIKE CAP URBAN</h3>
+            <p class="price">$89.990</p>
+            <a href="https://wa.me/573018942801?text=Hola,%20me%20interesa%20la%20Nike%20Cap%20Urban" class="btn-wa">COMPRAR</a>
+        </div>
+
     </div>
 
     <script>
         function openNav() { document.getElementById("mySidenav").style.width = "250px"; }
         function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
 
+        // --- LÓGICA DE FILTROS ---
+        filterSelection("all")
+        function filterSelection(c) {
+          var x, i;
+          x = document.getElementsByClassName("card");
+          if (c == "all") c = "";
+          for (i = 0; i < x.length; i++) {
+            w3RemoveClass(x[i], "show");
+            if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+          }
+        }
+
+        function w3AddClass(element, name) {
+          var i, arr1, arr2;
+          arr1 = element.className.split(" ");
+          arr2 = name.split(" ");
+          for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+          }
+        }
+
+        function w3RemoveClass(element, name) {
+          var i, arr1, arr2;
+          arr1 = element.className.split(" ");
+          arr2 = name.split(" ");
+          for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+              arr1.splice(arr1.indexOf(arr2[i]), 1);     
+            }
+          }
+          element.className = arr1.join(" ");
+        }
+
+        // Botón activo para filtros
+        var btnContainer = document.querySelector(".filter-container");
+        var btns = btnContainer.getElementsByClassName("filter-btn");
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener("click", function(){
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+          });
+        }
+
+        // --- GENERADOR DE CÓDIGO ---
         function generateCoupon() {
             let email = document.getElementById('userEmail').value;
             if(email.includes('@') && email.length > 5) {
-                document.getElementById('couponResult').style.display = 'block';
+                const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                let randomCode = '';
+                for (let i = 0; i < 6; i++) {
+                    randomCode += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+                }
+                let finalCode = "MD-" + randomCode;
+
+                const resultBox = document.getElementById('couponResult');
+                resultBox.innerHTML = `
+                    <p>Tu código único es:<br>
+                    <b id="codigoTexto" style="color: #d9534f; font-size: 1.5em; letter-spacing: 2px;">${finalCode}</b></p>
+                    <button class="btn-copy" onclick="copyToClipboard('${finalCode}')">Copiar Código</button>
+                `;
+                resultBox.style.display = 'block';
             } else {
-                alert("Por favor, ingresa un correo electrónico válido.");
+                alert("Ingresa un correo válido.");
             }
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("¡Código copiado! Pégalo en el chat de WhatsApp.");
+            });
         }
     </script>
 </body>
