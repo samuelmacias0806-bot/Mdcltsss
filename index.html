@@ -10,11 +10,24 @@
         
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #ffffff;
+            /* FONTO ACTUALIZADO */
+            background-image: url('https://i.ibb.co/pvWW7TWH/1773920823184.png');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
             color: #000000;
             margin: 0;
             padding: 0;
             scroll-behavior: smooth;
+        }
+
+        /* Capa ligera para que el fondo no sature visualmente */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.4); /* Ajusta este 0.4 si quieres más o menos transparencia */
+            z-index: -1;
         }
 
         /* --- MENÚ --- */
@@ -30,6 +43,7 @@
             z-index: 1000;
             font-weight: bold;
             border: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .sidenav {
@@ -39,7 +53,7 @@
             z-index: 1001;
             top: 0;
             right: 0;
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.95);
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;
@@ -53,6 +67,7 @@
             color: #333;
             display: block;
             text-transform: uppercase;
+            font-weight: bold;
         }
 
         /* --- HEADER --- */
@@ -63,19 +78,20 @@
         
         .header-title {
             font-family: 'Playball', cursive;
-            font-size: 4em;
+            font-size: 5em;
             color: #000;
             margin: 0;
+            text-shadow: 2px 2px 0px #fff; /* Sombra blanca para resaltar sobre el grafiti */
         }
 
         /* --- SECCIONES --- */
         .section-title {
             text-align: center;
-            background: #f4f4f4;
+            background: rgba(0, 0, 0, 0.85);
             padding: 15px;
             margin-top: 40px;
-            letter-spacing: 5px;
-            color: #333;
+            letter-spacing: 8px;
+            color: #fff;
             font-weight: bold;
             text-transform: uppercase;
         }
@@ -91,23 +107,31 @@
         }
 
         .card {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.9); /* Fondo blanco traslúcido */
             border: 1px solid #eee;
-            border-radius: 0px;
+            border-radius: 15px; /* Bordes redondeados más modernos */
             text-align: center;
             padding-bottom: 30px;
             transition: 0.3s;
+            backdrop-filter: blur(5px); /* Efecto de desenfoque detrás de la tarjeta */
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
-        .card:hover { border-color: #000; }
+        .card:hover { 
+            transform: translateY(-10px);
+            border-color: #000;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
 
         .img-box {
             width: 100%;
-            height: 400px;
+            height: 350px;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            background: #fff;
         }
 
         .img-box img {
@@ -120,6 +144,7 @@
             font-size: 1.5em; 
             font-weight: bold; 
             margin: 15px 0; 
+            color: #000;
         }
         
         .btn-wa {
@@ -131,10 +156,17 @@
             display: inline-block;
             text-transform: uppercase;
             font-size: 0.8em;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-wa:hover {
+            background: #333;
+            letter-spacing: 1px;
         }
 
         @media (max-width: 600px) {
-            .header-title { font-size: 3em; }
+            .header-title { font-size: 3.5em; }
             .container { grid-template-columns: 1fr; }
         }
     </style>
