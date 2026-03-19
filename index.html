@@ -3,63 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MDCLTS | Tienda Oficial</title>
+    <title>MDCLTS | Tienda Oficial - Streetwear Lorica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: sans-serif; margin: 0; background: #fff; color: #111; }
-        header { text-align: center; padding: 30px; border-bottom: 1px solid #eee; }
-        header h1 { letter-spacing: 4px; margin: 0; }
-        .contact { font-size: 0.8rem; color: #666; margin-top: 5px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #000; color: #fff; }
         
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 20px; padding: 20px; max-width: 1200px; margin: auto;
-        }
+        /* CABECERA CON EL NUEVO LOGO */
+        header { text-align: center; padding: 60px 20px 40px; border-bottom: 2px solid #222; background: #080808; }
+        header img.logo { max-width: 150px; height: auto; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); }
+        header h1 { font-family: 'Montserrat', sans-serif; font-size: 3rem; letter-spacing: 12px; margin: 0; color: #fff; text-transform: uppercase; text-shadow: 2px 2px 0px #e63946; }
+        .contact-info { margin-top: 15px; font-size: 0.9rem; color: #aaa; font-weight: 300; }
         
-        .card { border: 1px solid #eee; border-radius: 10px; padding: 15px; text-align: center; }
-        .card img { max-width: 100%; height: auto; border-radius: 5px; }
-        .card h3 { font-size: 0.9rem; text-transform: uppercase; margin: 15px 0 5px; }
-        .price { font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; }
+        /* CONTENEDOR DE PRODUCTOS */
+        .container { max-width: 1300px; margin: 30px auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
         
-        .btn-wa { 
-            display: block; background: #25D366; color: #fff; 
-            text-decoration: none; padding: 10px; border-radius: 5px; 
-            font-weight: bold; font-size: 0.9rem;
-        }
-        footer { text-align: center; padding: 30px; color: #999; font-size: 0.7rem; }
+        /* TARJETA DE PRODUCTO ESTILO PREMIUM */
+        .card { border: 1px solid #222; border-radius: 16px; padding: 25px; text-align: center; background-color: #0d0d0d; transition: 0.4s ease-in-out; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
+        .card:hover { box-shadow: 0 15px 35px rgba(230,57,70,0.2); transform: translateY(-8px); border-color: #e63946; }
+        .card img { max-width: 100%; height: auto; border-radius: 10px; margin-bottom: 20px; transition: transform 0.3s; }
+        .card:hover img { transform: scale(1.03); }
+        
+        /* TÍTULOS DE PRODUCTO MÁS CHEVERES */
+        .card h3 { font-family: 'Oswald', sans-serif; margin: 0 0 15px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; color: #fff; min-height: 48px; }
+        
+        /* PRECIO LLAMATIVO */
+        .price { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.6rem; color: #e63946; margin: 0 0 25px; }
+        
+        /* BOTÓN DE WHATSAPP REDISEÑADO */
+        .btn-buy { display: inline-block; background-color: #25D366; color: #fff; padding: 15px 0; text-decoration: none; border-radius: 50px; font-weight: bold; width: 100%; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 4px 15px rgba(37,211,102,0.3); }
+        .btn-buy:hover { background-color: #128C7E; box-shadow: 0 6px 20px rgba(18,140,126,0.5); transform: scale(1.02); }
+        
+        /* PIE DE PÁGINA */
+        footer { text-align: center; padding: 60px 20px; color: #666; font-size: 0.8rem; border-top: 1px solid #1a1a1a; background: #050505; }
+        footer p { margin: 5px 0; }
+        
+        /* AJUSTES PARA CELULAR */
+        @media (max-width: 600px) { header h1 { font-size: 2.2rem; letter-spacing: 8px; } header img.logo { max-width: 120px; } .container { grid-template-columns: 1fr; gap: 25px; padding: 10px; } .card { padding: 20px; } }
     </style>
 </head>
 <body>
 
 <header>
+    <img src="https://i.ibb.co/3ykXgB7q/Logo-MDCLTS.png" alt="MDCLTS Logo" class="logo">
     <h1>MDCLTS</h1>
-    <div class="contact">WhatsApp: 3018942801 - 3002871131</div>
+    <div class="contact-info">EST. 2026 | Lorica, Córdoba | WhatsApp: 3018942801 - 3002871131</div>
 </header>
 
-<div class="grid">
+<div class="container">
     <div class="card">
-        <img src="https://i.ibb.co/NdbXfF6J/IMG-20260306-WA0129.jpg" alt="Monastery">
-        <h3>Monastery Blanca y Negra</h3>
-        <p class="price">$110.000</p>
-        <a href="https://wa.me/573018942801?text=Hola!%20Me%20interesa%20la%20Monastery%20Blanca%20y%20Negra" class="btn-wa">COMPRAR WHATSAPP</a>
+        <img src="https://i.ibb.co/Y4v51Sq4/IMG-20260318-WA0142.jpg" alt="Clemont White Circle">
+        <h3>Clemont White Circle</h3>
+        <p class="price">$89.990 COP</p>
+        <a href="https://wa.me/573018942801?text=Me%20interesa%20la%20Clemont%20White%20Circle" class="btn-buy">Comprar WhatsApp</a>
     </div>
 
     <div class="card">
-        <img src="https://i.ibb.co/PsqGzYpk/IMG-20260223-WA0001.jpg" alt="Nike">
-        <h3>Nike Azul Urban</h3>
-        <p class="price">$110.000</p>
-        <a href="https://wa.me/573018942801?text=Hola!%20Me%20interesa%20la%20Nike%20Azul" class="btn-wa">COMPRAR WHATSAPP</a>
+        <img src="https://i.ibb.co/ZR7cSPBQ/IMG-20260306-WA0126.jpg" alt="Monastery Blanca Costado">
+        <h3>Monastery White Side Logo</h3>
+        <p class="price">$89.990 COP</p>
+        <a href="https://wa.me/573018942801?text=Me%20interesa%20la%20Monastery%20White%20Side" class="btn-buy">Comprar WhatsApp</a>
     </div>
 
     <div class="card">
-        <img src="https://via.placeholder.com/400x400?text=MDCLTS+Clemont" alt="Clemont">
-        <h3>Clemont Graphic</h3>
-        <p class="price">$110.000</p>
-        <a href="https://wa.me/573018942801?text=Hola!%20Me%20interesa%20la%20Clemont" class="btn-wa">COMPRAR WHATSAPP</a>
+        <img src="https://i.ibb.co/r1JDVXg/IMG-20260306-WA0127.jpg" alt="Monastery Negra Geometric">
+        <h3>Monastery Black Geometric</h3>
+        <p class="price">$89.990 COP</p>
+        <a href="https://wa.me/573018942801?text=Me%20interesa%20la%20Monastery%20Black%20Geometric" class="btn-buy">Comprar WhatsApp</a>
+    </div>
+
+    <div class="card">
+        <img src="https://i.ibb.co/Ndtsh4QZ/IMG-20260318-WA0133.jpg" alt="Clemont Red Hand">
+        <h3>Clemont Red Hand</h3>
+        <p class="price">$89.990 COP</p>
+        <a href="https://wa.me/573018942801?text=Me%20interesa%20la%20Clemont%20Red%20Hand" class="btn-buy">Comprar WhatsApp</a>
+    </div>
+
+    <div class="card">
+        <img src="https://i.ibb.co/NdbXfF6J/IMG-20260306-WA0129.jpg" alt="Monastery Classic">
+        <h3>Monastery Classic B&W</h3>
+        <p class="price">$89.990 COP</p>
+        <a href="https://wa.me/573018942801?text=Me%20interesa%20la%20Monastery%20Classic" class="btn-buy">Comprar WhatsApp</a>
+    </div>
+
+    <div class="card">
+        <img src="https://i.ibb.co/fVGhV75B/1000155147.jpg" alt="Nike Urban Blue">
+        <h3>Nike Urban Light Blue</h3>
+        <p class="price">$89.990 COP</p>
+        <a href="https://wa.me/573018942801?text=Me%20interesa%20la%20Nike%20Light%20Blue" class="btn-buy">Comprar WhatsApp</a>
+    </div>
+
+    <div class="card">
+        <img src="https://i.ibb.co/hR87p9S4/1000155131.jpg" alt="Hugo Boss Collection">
+        <h3>Hugo Boss Red Edition</h3>
+        <p class="price">$89.990 COP</p>
+        <a href="https://wa.me/573018942801?text=Me%20interesa%20la%20Hugo%20Boss%20Red" class="btn-buy">Comprar WhatsApp</a>
+    </div>
+
+    <div class="card">
+        <img src="https://i.ibb.co/JRHf8jP7/1000155114.jpg" alt="Clemont Verita">
+        <h3>Clemont Verita Eterna</h3>
+        <p class="price">$89.990 COP</p>
+        <a href="https://wa.me/573018942801?text=Me%20interesa%20la%20Clemont%20Verita" class="btn-buy">Comprar WhatsApp</a>
+    </div>
+
+    <div class="card">
+        <img src="https://i.ibb.co/G3Xm9v9k/1000155132.jpg" alt="Nike Silhouette">
+        <h3>Nike Silhouette Negra</h3>
+        <p class="price">$89.990 COP</p>
+        <a href="https://wa.me/573018942801?text=Me%20interesa%20la%20Nike%20Silhouette" class="btn-buy">Comprar WhatsApp</a>
+    </div>
+
+    <div class="card">
+        <img src="https://i.ibb.co/Cp4V3S94/1000155115.jpg" alt="Clemont Heart">
+        <h3>Clemont Heart Flame</h3>
+        <p class="price">$89.990 COP</p>
+        <a href="https://wa.me/573018942801?text=Me%20interesa%20la%20Clemont%20Heart%20Flame" class="btn-buy">Comprar WhatsApp</a>
     </div>
 </div>
 
-<footer>&copy; 2026 MDCLTS - Lorica, Córdoba.</footer>
+<footer>
+    <p>&copy; 2026 MDCLTS - Streetwear de Lujo.</p>
+    <p>Lorica, Córdoba | Todos los derechos reservados.</p>
+</footer>
 
 </body>
 </html>
