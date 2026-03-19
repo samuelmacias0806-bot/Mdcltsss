@@ -11,9 +11,18 @@
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #000; color: #fff; }
         
         /* CABECERA CON EL NUEVO LOGO */
-        header { text-align: center; padding: 60px 20px 40px; border-bottom: 2px solid #222; background: #080808; }
-        header img.logo { max-width: 150px; height: auto; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); }
+        header { text-align: center; padding: 60px 20px 40px; border-bottom: 2px solid #222; background: #080808; position: relative; }
+        
+        /* Ajuste de contenedor de logo para el "Plan B" */
+        .logo-container { max-width: 150px; height: auto; margin: 0 auto 20px; position: relative; }
+        header img.logo { max-width: 100%; height: auto; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); position: relative; z-index: 2; }
+        
+        /* "Plan B": Logo de texto si la imagen de ImgBB falla */
+        .logo-text-backup { font-family: 'Oswald', sans-serif; font-size: 2.5rem; letter-spacing: 5px; color: #fff; text-shadow: 0 0 8px #e63946; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; visibility: hidden; }
+        
+        /* Estilo para el nombre principal */
         header h1 { font-family: 'Montserrat', sans-serif; font-size: 3rem; letter-spacing: 12px; margin: 0; color: #fff; text-transform: uppercase; text-shadow: 2px 2px 0px #e63946; }
+        
         .contact-info { margin-top: 15px; font-size: 0.9rem; color: #aaa; font-weight: 300; }
         
         /* CONTENEDOR DE PRODUCTOS */
@@ -40,16 +49,31 @@
         footer p { margin: 5px 0; }
         
         /* AJUSTES PARA CELULAR */
-        @media (max-width: 600px) { header h1 { font-size: 2.2rem; letter-spacing: 8px; } header img.logo { max-width: 120px; } .container { grid-template-columns: 1fr; gap: 25px; padding: 10px; } .card { padding: 20px; } }
+        @media (max-width: 600px) { header h1 { font-size: 2.2rem; letter-spacing: 8px; } .logo-container { max-width: 120px; } .container { grid-template-columns: 1fr; gap: 25px; padding: 10px; } .card { padding: 20px; } }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="https://i.ibb.co/3ykXgB7q/Logo-MDCLTS.png" alt="MDCLTS Logo" class="logo">
+    <div class="logo-container">
+        <img src="https://i.ibb.co/5xbL8L0T/Logo-MDCLTS.png" alt="MDCLTS Logo" class="logo" onerror="showLogoTextBackup()">
+        <div class="logo-text-backup" id="logoTextBackup">MDC</div>
+    </div>
     <h1>MDCLTS</h1>
     <div class="contact-info">EST. 2026 | Lorica, Córdoba | WhatsApp: 3018942801 - 3002871131</div>
 </header>
+
+<script>
+    // Pequeño script para el Plan B si ImgBB falla
+    function showLogoTextBackup() {
+        var logoImg = document.querySelector('header img.logo');
+        var logoText = document.getElementById('logoTextBackup');
+        if (logoText) {
+            logoImg.style.visibility = 'hidden';
+            logoText.style.visibility = 'visible';
+        }
+    }
+</script>
 
 <div class="container">
     <div class="card">
