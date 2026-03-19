@@ -6,9 +6,9 @@
     <title>MDCLTS - Tienda de Camisetas</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #121212; /* Fondo oscuro */
-            color: #fff; /* Texto blanco */
+            color: #ffffff;
             margin: 0;
             padding: 20px;
             display: flex;
@@ -16,82 +16,127 @@
             align-items: center;
         }
         header {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             text-align: center;
         }
         #logo {
-            max-width: 200px; /* Ajusta el tamaño del logo */
+            max-width: 250px;
             height: auto;
         }
         .container {
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
         }
         .producto {
             border: 1px solid #333;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
-            background-color: #1e1e1e; /* Fondo de la tarjeta */
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            background-color: #1e1e1e;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 20px;
+        }
+        .producto img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .info {
+            flex-grow: 1;
         }
         .producto h2 {
-            margin-top: 0;
+            margin: 0 0 10px 0;
+            font-size: 1.4em;
+            color: #f0f0f0;
+        }
+        .precio {
+            font-size: 1.2em;
+            color: #25d366;
+            font-weight: bold;
+            margin-bottom: 15px;
         }
         .whatsapp-button {
-            background-color: #25d366; /* Verde WhatsApp */
+            background-color: #25d366;
             color: #fff;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 20px;
+            border-radius: 8px;
             cursor: pointer;
             text-decoration: none;
             font-weight: bold;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        .whatsapp-button:hover {
+            background-color: #1da851;
         }
     </style>
 </head>
 <body>
+
     <header>
         <img src="https://i.ibb.co/bgL4xQ9Z/1773899219442.png" alt="MDCLTS Logo" id="logo">
     </header>
+
     <div class="container">
+
         <div class="producto">
-            <div>
-                <h2>Camiseta Monastery</h2>
-                <p>Precio: $89.990 COP</p>
-                <p>Descripción: Camiseta Monastery premium...</p>
+            <img src="https://i.ibb.co/PsqGzYpk/IMG-20260223-WA0001.jpg" alt="Nike Urban Light">
+            <div class="info">
+                <h2>Nike Urban Light</h2>
+                <p class="precio">$89.990 COP</p>
+                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Nike%20Urban%20Light" class="whatsapp-button" target="_blank">Comprar por WhatsApp</a>
             </div>
-            <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20camiseta%20Monastery." class="whatsapp-button" target="_blank">Comprar por WhatsApp</a>
         </div>
 
         <div class="producto">
-            <div>
-                <h2>Camiseta Nike</h2>
-                <p>Precio: $89.990 COP</p>
-                <p>Descripción: Camiseta Nike deportiva...</p>
+            <img src="https://i.ibb.co/7JktqhHC/IMG-20260318-WA0146.jpg" alt="Hugo Boss Red Edition">
+            <div class="info">
+                <h2>Hugo Boss Red Edition</h2>
+                <p class="precio">$89.990 COP</p>
+                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Hugo%20Boss%20Red%20Edition" class="whatsapp-button" target="_blank">Comprar por WhatsApp</a>
             </div>
-            <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20camiseta%20Nike." class="whatsapp-button" target="_blank">Comprar por WhatsApp</a>
-        </div>
-        
-        <div class="producto">
-            <div>
-                <h2>Camiseta Clemont</h2>
-                <p>Precio: $89.990 COP</p>
-                <p>Descripción: Camiseta Clemont elegante...</p>
-            </div>
-            <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20camiseta%20Clemont." class="whatsapp-button" target="_blank">Comprar por WhatsApp</a>
         </div>
 
         <div class="producto">
-            <div>
-                <h2>Camiseta Hugo Boss</h2>
-                <p>Precio: $89.990 COP</p>
-                <p>Descripción: Camiseta Hugo Boss clásica...</p>
+            <img src="https://i.ibb.co/Y4v51Sq4/IMG-20260318-WA0142.jpg" alt="Clemont Verita Eterna">
+            <div class="info">
+                <h2>Clemont Verita Eterna</h2>
+                <p class="precio">$89.990 COP</p>
+                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Clemont%20Verita%20Eterna" class="whatsapp-button" target="_blank">Comprar por WhatsApp</a>
             </div>
-            <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20camiseta%20Hugo%20Boss." class="whatsapp-button" target="_blank">Comprar por WhatsApp</a>
         </div>
+
+        <div class="producto">
+            <img src="https://i.ibb.co/WvrqtY3H/IMG-20260318-WA0147.jpg" alt="Nike Silhouette Negra">
+            <div class="info">
+                <h2>Nike Silhouette Negra</h2>
+                <p class="precio">$89.990 COP</p>
+                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Nike%20Silhouette%20Negra" class="whatsapp-button" target="_blank">Comprar por WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="https://i.ibb.co/N6r0DNsb/IMG-20260318-WA0139.jpg" alt="Clemont Heart Flame">
+            <div class="info">
+                <h2>Clemont Heart Flame</h2>
+                <p class="precio">$89.990 COP</p>
+                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Clemont%20Heart%20Flame" class="whatsapp-button" target="_blank">Comprar por WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="https://i.ibb.co/SwmwRN9D/IMG-20260306-WA0130.jpg" alt="Monastery">
+            <div class="info">
+                <h2>Monastery</h2>
+                <p class="precio">$89.990 COP</p>
+                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Monastery" class="whatsapp-button" target="_blank">Comprar por WhatsApp</a>
+            </div>
+        </div>
+
     </div>
+
 </body>
 </html>
