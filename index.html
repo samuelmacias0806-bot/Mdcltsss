@@ -3,38 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MDCLTS | Premium Store</title>
+    <title>MDCLTS | Tienda Oficial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --fondo: #1a1a1a; /* Gris muy oscuro profesional */
-            --tarjeta: #242424; /* Gris de los recuadros */
-            --acento: #25d366; /* Verde WhatsApp */
-        }
-
-        html { scroll-behavior: smooth; } /* Desplazamiento suave para el menú */
-
+        * { box-sizing: border-box; }
+        
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: var(--fondo);
-            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff; /* FONDO BLANCO */
+            color: #000000; /* TEXTO NEGRO */
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* --- MENÚ LATERAL --- */
+        /* --- MENÚ --- */
         .menu-btn {
             position: fixed;
             top: 15px;
             right: 15px;
-            font-size: 26px;
+            background: #25d366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
             cursor: pointer;
             z-index: 1000;
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid #333;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: none;
         }
 
         .sidenav {
@@ -44,259 +40,206 @@
             z-index: 1001;
             top: 0;
             right: 0;
-            background-color: #000;
+            background-color: #f8f9fa; /* Fondo claro para el menú */
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;
             text-align: center;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.05);
         }
 
         .sidenav a {
-            padding: 18px;
+            padding: 15px;
             text-decoration: none;
             font-size: 20px;
-            color: #888;
+            color: #333;
             display: block;
-            transition: 0.3s;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .sidenav a:hover { color: var(--acento); }
+        .sidenav a:hover { color: #25d366; }
 
-        .sidenav .closebtn {
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            font-size: 36px;
+        /* --- HEADER --- */
+        header { 
+            text-align: center; 
+            padding: 60px 20px 40px 20px; 
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* TÍTULO EN CURSIVA */
+        .header-title {
+            font-family: 'Playball', cursive;
+            font-size: 3.5em;
+            color: #000000;
+            margin: 0;
+            line-height: 1;
         }
 
-        /* --- CABECERA --- */
-        header {
+        /* --- SECCIONES --- */
+        .section-title {
             text-align: center;
-            padding: 50px 20px 20px 20px;
-        }
-
-        #logo {
-            max-width: 160px; /* Logo ligeramente más pequeño */
-            height: auto;
-            margin-bottom: 15px;
-        }
-
-        /* --- REPRODUCTOR --- */
-        .music-player {
-            background: #000;
-            padding: 8px 20px;
-            border-radius: 50px;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            border: 1px solid #333;
-            font-size: 0.9em;
-        }
-
-        /* --- TÍTULOS DE SECCIÓN --- */
-        .seccion-titulo {
-            text-align: center;
-            padding: 30px 0 10px 0;
-            font-size: 1.8em;
-            text-transform: uppercase;
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 30px 0 20px 0;
             letter-spacing: 4px;
-            color: #444; /* Gris sutil */
-            border-top: 1px solid #2a2a2a;
-            margin-top: 20px;
+            color: #555;
+            font-size: 1.3em;
+            text-transform: uppercase;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
         }
 
-        /* --- CONTENEDOR DE PRODUCTOS --- */
+        /* --- CONTENEDOR FLEXIBLE --- */
         .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas un poco más estrechas */
-            gap: 25px;
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 25px; 
             padding: 20px;
-            max-width: 1200px;
+            max-width: 1300px; 
             margin: 0 auto;
         }
 
-        .producto {
-            background-color: var(--tarjeta);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .producto:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-        }
-
-        .producto-img-container {
+        /* --- TARJETA DE PRODUCTO --- */
+        .card {
+            background: #ffffff;
             width: 100%;
-            height: 420px; /* ALTURA REDUCIDA DE LAS FOTOS */
-            background-color: #111; /* Fondo oscuro detrás de la imagen */
+            max-width: 340px; 
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .img-box {
+            width: 100%;
+            height: 380px; 
+            background: #fdfdfd;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
         }
 
-        .producto img {
+        .img-box img {
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain; /* SE MUESTRA LA IMAGEN COMPLETA SIN RECORTAR */
+            object-fit: contain; 
         }
 
-        .info {
-            padding: 20px;
-            text-align: center;
+        h3 { 
+            font-size: 1.1em; 
+            margin: 15px 10px 5px 10px; 
+            letter-spacing: 1px; 
+            color: #1a1a1a;
+            font-weight: 600;
         }
 
-        .info h2 {
-            margin: 0;
-            font-size: 1.2em;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+        .price { 
+            color: #000000; 
+            font-size: 1.6em; 
+            font-weight: bold; 
+            margin: 10px 0 20px 0; 
         }
-
-        .precio {
-            font-size: 1.4em;
-            color: var(--acento);
-            font-weight: bold;
-            margin: 12px 0;
-        }
-
-        .whatsapp-button {
-            display: block;
-            background: var(--acento);
-            color: black;
+        
+        .btn-wa {
+            background: #25d366;
+            color: white;
             text-decoration: none;
-            padding: 14px;
+            padding: 12px 30px;
+            border-radius: 30px;
             font-weight: bold;
-            border-radius: 8px;
+            display: inline-block;
+            transition: 0.3s;
             text-transform: uppercase;
             font-size: 0.9em;
             letter-spacing: 1px;
         }
+        .btn-wa:hover { background: #1da851; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
 
     </style>
 </head>
 <body>
 
     <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="javascript:void(0)" onclick="closeNav()" style="font-size:35px; color:#ff4444; margin-bottom: 20px;">&times;</a>
         <a href="#nike" onclick="closeNav()">NIKE</a>
         <a href="#boss" onclick="closeNav()">HUGO BOSS</a>
         <a href="#clemont" onclick="closeNav()">CLEMONT</a>
         <a href="#monastery" onclick="closeNav()">MONASTERY</a>
     </div>
 
-    <span class="menu-btn" onclick="openNav()">&#9776; Marcas</span>
+    <button class="menu-btn" onclick="openNav()">MENÚ ☰</button>
 
     <header>
-        <img src="https://i.ibb.co/bgL4xQ9Z/1773899219442.png" alt="MDCLTS Logo" id="logo">
-        <br>
-        <div class="music-player">
-            <span>🎵 Sonido Urbano</span>
-            <audio id="bgMusic" loop>
-                <source src="musica.mp3" type="audio/mpeg">
-            </audio>
-            <button onclick="toggleMusic()" id="musicBtn" style="background:var(--acento); border:none; padding:5px 15px; border-radius:20px; cursor:pointer; font-weight:bold; font-size:0.8em;">PLAY</button>
-        </div>
+        <h1 class="header-title">MDCLTS</h1>
     </header>
 
-    <div id="nike" class="seccion-titulo">NIKE</div>
+    <div id="nike" class="section-title">NIKE</div>
     <div class="container">
-        <div class="producto">
-            <div class="producto-img-container">
-                <img src="https://i.ibb.co/PsqGzYpk/IMG-20260223-WA0001.jpg" alt="Nike Urban Light">
-            </div>
-            <div class="info">
-                <h2>Nike Urban Light</h2>
-                <p class="precio">$89.990 COP</p>
-                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Nike%20Urban%20Light" class="whatsapp-button">Comprar</a>
-            </div>
+        <div class="card">
+            <div class="img-box"><img src="https://i.ibb.co/PsqGzYpk/IMG-20260223-WA0001.jpg"></div>
+            <h3>NIKE URBAN LIGHT</h3>
+            <p class="price">$89.990</p>
+            <a href="https://wa.me/XXXXXXXXXXX" class="btn-wa">PEDIR POR WHATSAPP</a>
         </div>
-        <div class="producto">
-            <div class="producto-img-container">
-                <img src="https://i.ibb.co/WvrqtY3H/IMG-20260318-WA0147.jpg" alt="Nike Silhouette Negra">
-            </div>
-            <div class="info">
-                <h2>Nike Silhouette Negra</h2>
-                <p class="precio">$89.990 COP</p>
-                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Nike%20Silhouette%20Negra" class="whatsapp-button">Comprar</a>
-            </div>
+        <div class="card">
+            <div class="img-box"><img src="https://i.ibb.co/WvrqtY3H/IMG-20260318-WA0147.jpg"></div>
+            <h3>NIKE SILHOUETTE NEGRA</h3>
+            <p class="price">$89.990</p>
+            <a href="https://wa.me/XXXXXXXXXXX" class="btn-wa">PEDIR POR WHATSAPP</a>
         </div>
     </div>
 
-    <div id="boss" class="seccion-titulo">HUGO BOSS</div>
+    <div id="boss" class="section-title">HUGO BOSS</div>
     <div class="container">
-        <div class="producto">
-            <div class="producto-img-container">
-                <img src="https://i.ibb.co/7JktqhHC/IMG-20260318-WA0146.jpg" alt="Hugo Boss Red Edition">
-            </div>
-            <div class="info">
-                <h2>Hugo Boss Red Edition</h2>
-                <p class="precio">$89.990 COP</p>
-                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Hugo%20Boss%20Red%20Edition" class="whatsapp-button">Comprar</a>
-            </div>
+        <div class="card">
+            <div class="img-box"><img src="https://i.ibb.co/7JktqhHC/IMG-20260318-WA0146.jpg"></div>
+            <h3>HUGO BOSS RED EDITION</h3>
+            <p class="price">$89.990</p>
+            <a href="https://wa.me/XXXXXXXXXXX" class="btn-wa">PEDIR POR WHATSAPP</a>
         </div>
     </div>
 
-    <div id="clemont" class="seccion-titulo">CLEMONT</div>
+    <div id="clemont" class="section-title">CLEMONT</div>
     <div class="container">
-        <div class="producto">
-            <div class="producto-img-container">
-                <img src="https://i.ibb.co/Y4v51Sq4/IMG-20260318-WA0142.jpg" alt="Clemont Verita Eterna">
-            </div>
-            <div class="info">
-                <h2>Clemont Verita Eterna</h2>
-                <p class="precio">$89.990 COP</p>
-                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Clemont%20Verita%20Eterna" class="whatsapp-button">Comprar</a>
-            </div>
+        <div class="card">
+            <div class="img-box"><img src="https://i.ibb.co/Y4v51Sq4/IMG-20260318-WA0142.jpg"></div>
+            <h3>VERITA ETERNA</h3>
+            <p class="price">$89.990</p>
+            <a href="https://wa.me/XXXXXXXXXXX" class="btn-wa">PEDIR POR WHATSAPP</a>
         </div>
-        <div class="producto">
-            <div class="producto-img-container">
-                <img src="https://i.ibb.co/N6r0DNsb/IMG-20260318-WA0139.jpg" alt="Clemont Heart Flame">
-            </div>
-            <div class="info">
-                <h2>Clemont Heart Flame</h2>
-                <p class="precio">$89.990 COP</p>
-                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Clemont%20Heart%20Flame" class="whatsapp-button">Comprar</a>
-            </div>
+        <div class="card">
+            <div class="img-box"><img src="https://i.ibb.co/N6r0DNsb/IMG-20260318-WA0139.jpg"></div>
+            <h3>HEART FLAME</h3>
+            <p class="price">$89.990</p>
+            <a href="https://wa.me/XXXXXXXXXXX" class="btn-wa">PEDIR POR WHATSAPP</a>
         </div>
     </div>
 
-    <div id="monastery" class="seccion-titulo">MONASTERY</div>
+    <div id="monastery" class="section-title">MONASTERY</div>
     <div class="container">
-        <div class="producto">
-            <div class="producto-img-container">
-                <img src="https://i.ibb.co/SwmwRN9D/IMG-20260306-WA0130.jpg" alt="Monastery">
-            </div>
-            <div class="info">
-                <h2>Monastery</h2>
-                <p class="precio">$89.990 COP</p>
-                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Monastery" class="whatsapp-button">Comprar</a>
-            </div>
+        <div class="card">
+            <div class="img-box"><img src="https://i.ibb.co/SwmwRN9D/IMG-20260306-WA0130.jpg"></div>
+            <h3>MONASTERY BLACK</h3>
+            <p class="price">$89.990</p>
+            <a href="https://wa.me/XXXXXXXXXXX" class="btn-wa">PEDIR POR WHATSAPP</a>
         </div>
     </div>
 
     <script>
-        function openNav() { document.getElementById("mySidenav").style.width = "260px"; }
+        function openNav() { document.getElementById("mySidenav").style.width = "280px"; }
         function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
-
-        var music = document.getElementById("bgMusic");
-        var btn = document.getElementById("musicBtn");
-        function toggleMusic() {
-            if (music.paused) {
-                music.play();
-                btn.innerHTML = "MUTE";
-                btn.style.background = "#ff4444";
-            } else {
-                music.pause();
-                btn.innerHTML = "PLAY";
-                btn.style.background = "#25d366";
-            }
-        }
     </script>
-
 </body>
 </html>
