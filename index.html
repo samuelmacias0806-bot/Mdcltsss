@@ -3,213 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MDCLTS | Tienda Oficial</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
+    <title>MDCLTS | Urban Minimalist</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
-        * { box-sizing: border-box; }
-        
+        /* 1. CONFIGURACIÓN DEL FONDO URBANO (Se mantiene igual) */
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #ffffff;
-            color: #000000;
             margin: 0;
             padding: 0;
-            scroll-behavior: smooth;
-        }
-
-        /* --- MENÚ --- */
-        .menu-btn {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            background: #000;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            z-index: 1000;
-            font-weight: bold;
-            border: none;
-        }
-
-        .sidenav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1001;
-            top: 0;
-            right: 0;
             background-color: #ffffff;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-        }
-
-        .sidenav a {
-            padding: 15px 25px;
-            text-decoration: none;
-            font-size: 20px;
-            color: #333;
-            display: block;
-            text-transform: uppercase;
-        }
-
-        /* --- HEADER --- */
-        header { 
-            text-align: center; 
-            padding: 80px 20px 40px 20px; 
-        }
-        
-        .header-title {
-            font-family: 'Playball', cursive;
-            font-size: 4em;
+            background-image: url('https://i.ibb.co/rRD4nnXG/1773911755424.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            font-family: 'Montserrat', sans-serif; /* Fuente base limpia */
             color: #000;
+        }
+
+        /* 2. NUEVO ESTILO DEL TÍTULO: MINIMALIST BOLD CURSIVE */
+        header {
+            padding: 60px 0 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Montserrat Alternates', sans-serif; /* La fuente especial */
+            font-weight: 900; /* Lo más grueso (Black) */
+            font-size: 4.5rem; /* Súper grande */
             margin: 0;
+            letter-spacing: -2px; /* Letras más pegadas, estilo urbano */
+            text-transform: uppercase; /* Todo en mayúsculas para más fuerza */
+            /* Efecto sutil para resaltar sobre el grafiti */
+            text-shadow: 2px 2px 0px #fff; 
         }
 
-        /* --- SECCIONES --- */
-        .section-title {
+        /* 3. CONTENEDOR DE LA GUÍA DE TALLAS (Se mantiene igual) */
+        .size-container {
+            max-width: 600px;
+            margin: 30px auto 50px auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border: 2px solid #000;
+            box-shadow: 10px 10px 0px #000;
             text-align: center;
-            background: #f4f4f4;
-            padding: 15px;
-            margin-top: 40px;
-            letter-spacing: 5px;
-            color: #333;
-            font-weight: bold;
-            text-transform: uppercase;
         }
 
-        /* --- GRID DE PRODUCTOS --- */
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 0px;
-            text-align: center;
-            padding-bottom: 30px;
-            transition: 0.3s;
-        }
-
-        .card:hover { border-color: #000; }
-
-        .img-box {
+        .size-table {
             width: 100%;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            border-collapse: collapse;
+            margin-top: 20px;
         }
 
-        .img-box img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        .price { 
-            font-size: 1.5em; 
-            font-weight: bold; 
-            margin: 15px 0; 
-        }
-        
-        .btn-wa {
-            background: #000;
+        .size-table th {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            background-color: #000;
             color: #fff;
-            text-decoration: none;
-            padding: 12px 35px;
-            font-weight: bold;
-            display: inline-block;
+            padding: 12px;
             text-transform: uppercase;
-            font-size: 0.8em;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
         }
 
-        @media (max-width: 600px) {
-            .header-title { font-size: 3em; }
-            .container { grid-template-columns: 1fr; }
+        .size-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            font-weight: 700;
+        }
+
+        .price-tag {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-top: 25px;
+            display: block;
+            font-family: 'Montserrat Alternates', sans-serif;
+        }
+
+        /* 4. BOTÓN FLOTANTE DE WHATSAPP (Se mantiene igual) */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background-color: #25d366;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .whatsapp-btn img {
+            width: 35px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* NOTA DE PIE */
+        .footer-note {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            margin-top: 20px;
+            letter-spacing: 1.5px;
+            color: #555;
+            font-weight: 400;
         }
     </style>
 </head>
 <body>
 
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" onclick="closeNav()" style="font-size:30px;">&times;</a>
-        <a href="#nike" onclick="closeNav()">NIKE</a>
-        <a href="#boss" onclick="closeNav()">HUGO BOSS</a>
-        <a href="#clemont" onclick="closeNav()">CLEMONT</a>
-        <a href="#monastery" onclick="closeNav()">MONASTERY</a>
-    </div>
-
-    <div class="menu-btn" onclick="openNav()">MARCAS ☰</div>
-
     <header>
-        <h1 class="header-title">MDCLTS</h1>
+        <h1>MDCLTS</h1>
     </header>
 
-    <div id="nike" class="section-title">NIKE</div>
-    <div class="container">
-        <div class="card">
-            <div class="img-box"><img src="https://i.ibb.co/PsqGzYpk/IMG-20260223-WA0001.jpg"></div>
-            <h3>NIKE URBAN LIGHT</h3>
-            <p class="price">$89.990</p>
-            <a href="https://wa.me/573018942801?text=Hola,%20me%20interesa%20la%20Nike%20Urban%20Light" class="btn-wa">COMPRAR</a>
-        </div>
-        <div class="card">
-            <div class="img-box"><img src="https://i.ibb.co/WvrqtY3H/IMG-20260318-WA0147.jpg"></div>
-            <h3>NIKE SILHOUETTE</h3>
-            <p class="price">$89.990</p>
-            <a href="https://wa.me/573018942801?text=Hola,%20me%20interesa%20la%20Nike%20Silhouette" class="btn-wa">COMPRAR</a>
-        </div>
+    <div class="size-container">
+        <h3>GUÍA DE TALLAS</h3>
+        <table class="size-table">
+            <thead>
+                <tr>
+                    <th>Talla</th>
+                    <th>Largo (cm)</th>
+                    <th>Ancho (cm)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>S</td><td>68</td><td>48</td></tr>
+                <tr><td>M</td><td>70</td><td>51</td></tr>
+                <tr><td>L</td><td>73</td><td>54</td></tr>
+                <tr><td>XL</td><td>76</td><td>57</td></tr>
+            </tbody>
+        </table>
+        <span class="price-tag">$89.990 COP</span>
+        <p class="footer-note">Marcas: Nike • Hugo Boss • Clemont • Monastery</p>
     </div>
 
-    <div id="boss" class="section-title">HUGO BOSS</div>
-    <div class="container">
-        <div class="card">
-            <div class="img-box"><img src="https://i.ibb.co/7JktqhHC/IMG-20260318-WA0146.jpg"></div>
-            <h3>HUGO BOSS RED</h3>
-            <p class="price">$89.990</p>
-            <a href="https://wa.me/573018942801?text=Hola,%20me%20interesa%20la%20Hugo%20Boss%20Red" class="btn-wa">COMPRAR</a>
-        </div>
-    </div>
+    <a href="https://wa.me/573018942801?text=Hola%20MDCLTS!%20Me%20interesa%20una%20camiseta%20de%20$89.990" class="whatsapp-btn" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
 
-    <div id="clemont" class="section-title">CLEMONT</div>
-    <div class="container">
-        <div class="card">
-            <div class="img-box"><img src="https://i.ibb.co/Y4v51Sq4/IMG-20260318-WA0142.jpg"></div>
-            <h3>VERITA ETERNA</h3>
-            <p class="price">$89.990</p>
-            <a href="https://wa.me/573018942801?text=Hola,%20me%20interesa%20la%20Verita%20Eterna" class="btn-wa">COMPRAR</a>
-        </div>
-        <div class="card">
-            <div class="img-box"><img src="https://i.ibb.co/N6r0DNsb/IMG-20260318-WA0139.jpg"></div>
-            <h3>HEART FLAME</h3>
-            <p class="price">$89.990</p>
-            <a href="https://wa.me/573018942801?text=Hola,%20me%20interesa%20la%20Heart%20Flame" class="btn-wa">COMPRAR</a>
-        </div>
-    </div>
-
-    <div id="monastery" class="section-title">MONASTERY</div>
-    <div class="container">
-        <div class="card">
-            <div class="img-box"><img src="https://i.ibb.co/SwmwRN9D/IMG-20260306-WA0130.jpg"></div>
-            <h3>MONASTERY BLACK</h3>
-            <p class="price">$89.990</p>
-            <a href="https://wa.me/573018942801?text=Hola,%20me%20interesa%20la%20Monastery%20Black" class="btn-wa">COMPRAR</a>
-        </div>
-    </div>
-
-    <script>
-        function openNav() { document.getElementById("mySidenav").style.width = "250px"; }
-        function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
-    </script>
 </body>
 </html>
