@@ -6,30 +6,35 @@
     <title>MDCLTS | Premium Store</title>
     <style>
         :root {
-            --fondo: #2c2c2c; /* Gris oscuro profesional */
-            --tarjeta: #1e1e1e;
-            --acento: #25d366;
+            --fondo: #1a1a1a; /* Gris muy oscuro profesional */
+            --tarjeta: #242424; /* Gris de los recuadros */
+            --acento: #25d366; /* Verde WhatsApp */
         }
 
+        html { scroll-behavior: smooth; } /* Desplazamiento suave para el menú */
+
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background-color: var(--fondo);
             color: white;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
 
-        /* --- MENÚ LATERAL (HAMBURGUESA) --- */
+        /* --- MENÚ LATERAL --- */
         .menu-btn {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            font-size: 30px;
+            top: 15px;
+            right: 15px;
+            font-size: 26px;
             cursor: pointer;
             z-index: 1000;
-            background: rgba(0,0,0,0.5);
-            padding: 5px 15px;
-            border-radius: 5px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #333;
         }
 
         .sidenav {
@@ -39,53 +44,74 @@
             z-index: 1001;
             top: 0;
             right: 0;
-            background-color: #111;
+            background-color: #000;
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;
+            text-align: center;
         }
 
         .sidenav a {
-            padding: 15px 30px;
+            padding: 18px;
             text-decoration: none;
             font-size: 20px;
-            color: #818181;
+            color: #888;
             display: block;
             transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .sidenav a:hover { color: white; }
+        .sidenav a:hover { color: var(--acento); }
 
         .sidenav .closebtn {
             position: absolute;
-            top: 0;
-            right: 25px;
+            top: 10px;
+            left: 20px;
             font-size: 36px;
         }
 
-        /* --- CABECERA Y MÚSICA --- */
+        /* --- CABECERA --- */
         header {
             text-align: center;
-            padding: 40px 20px;
+            padding: 50px 20px 20px 20px;
         }
 
-        #logo { max-width: 180px; }
+        #logo {
+            max-width: 160px; /* Logo ligeramente más pequeño */
+            height: auto;
+            margin-bottom: 15px;
+        }
 
+        /* --- REPRODUCTOR --- */
         .music-player {
-            margin: 10px 0;
-            background: #111;
-            padding: 10px;
+            background: #000;
+            padding: 8px 20px;
             border-radius: 50px;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            border: 1px solid #333;
+            font-size: 0.9em;
         }
 
-        /* --- PRODUCTOS (VERTICALES Y GRANDES) --- */
+        /* --- TÍTULOS DE SECCIÓN --- */
+        .seccion-titulo {
+            text-align: center;
+            padding: 30px 0 10px 0;
+            font-size: 1.8em;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #444; /* Gris sutil */
+            border-top: 1px solid #2a2a2a;
+            margin-top: 20px;
+        }
+
+        /* --- CONTENEDOR DE PRODUCTOS --- */
         .container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas un poco más estrechas */
+            gap: 25px;
             padding: 20px;
             max-width: 1200px;
             margin: 0 auto;
@@ -93,15 +119,30 @@
 
         .producto {
             background-color: var(--tarjeta);
-            border-radius: 0px; /* Estilo cuadrado vertical más moderno */
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .producto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        }
+
+        .producto-img-container {
+            width: 100%;
+            height: 420px; /* ALTURA REDUCIDA DE LAS FOTOS */
+            background-color: #111; /* Fondo oscuro detrás de la imagen */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .producto img {
-            width: 100%;
-            height: 500px; /* Vertical y grande */
-            object-fit: cover;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* SE MUESTRA LA IMAGEN COMPLETA SIN RECORTAR */
         }
 
         .info {
@@ -109,10 +150,18 @@
             text-align: center;
         }
 
+        .info h2 {
+            margin: 0;
+            font-size: 1.2em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
         .precio {
             font-size: 1.4em;
             color: var(--acento);
             font-weight: bold;
+            margin: 12px 0;
         }
 
         .whatsapp-button {
@@ -120,61 +169,131 @@
             background: var(--acento);
             color: black;
             text-decoration: none;
-            padding: 15px;
+            padding: 14px;
             font-weight: bold;
+            border-radius: 8px;
             text-transform: uppercase;
-            margin-top: 15px;
+            font-size: 0.9em;
+            letter-spacing: 1px;
         }
+
     </style>
 </head>
 <body>
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">NIKE</a>
-        <a href="#">HUGO BOSS</a>
-        <a href="#">CLEMONT</a>
-        <a href="#">MONASTERY</a>
+        <a href="#nike" onclick="closeNav()">NIKE</a>
+        <a href="#boss" onclick="closeNav()">HUGO BOSS</a>
+        <a href="#clemont" onclick="closeNav()">CLEMONT</a>
+        <a href="#monastery" onclick="closeNav()">MONASTERY</a>
     </div>
 
-    <span class="menu-btn" onclick="openNav()">&#9776;</span>
+    <span class="menu-btn" onclick="openNav()">&#9776; Marcas</span>
 
     <header>
         <img src="https://i.ibb.co/bgL4xQ9Z/1773899219442.png" alt="MDCLTS Logo" id="logo">
         <br>
         <div class="music-player">
-            <span>🎵 Música</span>
+            <span>🎵 Sonido Urbano</span>
             <audio id="bgMusic" loop>
                 <source src="musica.mp3" type="audio/mpeg">
             </audio>
-            <button onclick="toggleMusic()" id="musicBtn" style="cursor:pointer; border:none; background:var(--acento); border-radius:20px; padding:5px 15px;">PLAY</button>
+            <button onclick="toggleMusic()" id="musicBtn" style="background:var(--acento); border:none; padding:5px 15px; border-radius:20px; cursor:pointer; font-weight:bold; font-size:0.8em;">PLAY</button>
         </div>
     </header>
 
+    <div id="nike" class="seccion-titulo">NIKE</div>
     <div class="container">
-        <div class="producto" id="nike">
-            <img src="https://i.ibb.co/PsqGzYpk/IMG-20260223-WA0001.jpg" alt="Nike Urban Light">
+        <div class="producto">
+            <div class="producto-img-container">
+                <img src="https://i.ibb.co/PsqGzYpk/IMG-20260223-WA0001.jpg" alt="Nike Urban Light">
+            </div>
             <div class="info">
-                <h2>NIKE URBAN LIGHT</h2>
+                <h2>Nike Urban Light</h2>
                 <p class="precio">$89.990 COP</p>
-                <a href="https://wa.me/XXXXXXXXXXX?text=Me%20interesa%20la%20Nike%20Urban" class="whatsapp-button">Comprar</a>
+                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Nike%20Urban%20Light" class="whatsapp-button">Comprar</a>
             </div>
         </div>
-
+        <div class="producto">
+            <div class="producto-img-container">
+                <img src="https://i.ibb.co/WvrqtY3H/IMG-20260318-WA0147.jpg" alt="Nike Silhouette Negra">
+            </div>
+            <div class="info">
+                <h2>Nike Silhouette Negra</h2>
+                <p class="precio">$89.990 COP</p>
+                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Nike%20Silhouette%20Negra" class="whatsapp-button">Comprar</a>
+            </div>
         </div>
+    </div>
+
+    <div id="boss" class="seccion-titulo">HUGO BOSS</div>
+    <div class="container">
+        <div class="producto">
+            <div class="producto-img-container">
+                <img src="https://i.ibb.co/7JktqhHC/IMG-20260318-WA0146.jpg" alt="Hugo Boss Red Edition">
+            </div>
+            <div class="info">
+                <h2>Hugo Boss Red Edition</h2>
+                <p class="precio">$89.990 COP</p>
+                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Hugo%20Boss%20Red%20Edition" class="whatsapp-button">Comprar</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="clemont" class="seccion-titulo">CLEMONT</div>
+    <div class="container">
+        <div class="producto">
+            <div class="producto-img-container">
+                <img src="https://i.ibb.co/Y4v51Sq4/IMG-20260318-WA0142.jpg" alt="Clemont Verita Eterna">
+            </div>
+            <div class="info">
+                <h2>Clemont Verita Eterna</h2>
+                <p class="precio">$89.990 COP</p>
+                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Clemont%20Verita%20Eterna" class="whatsapp-button">Comprar</a>
+            </div>
+        </div>
+        <div class="producto">
+            <div class="producto-img-container">
+                <img src="https://i.ibb.co/N6r0DNsb/IMG-20260318-WA0139.jpg" alt="Clemont Heart Flame">
+            </div>
+            <div class="info">
+                <h2>Clemont Heart Flame</h2>
+                <p class="precio">$89.990 COP</p>
+                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Clemont%20Heart%20Flame" class="whatsapp-button">Comprar</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="monastery" class="seccion-titulo">MONASTERY</div>
+    <div class="container">
+        <div class="producto">
+            <div class="producto-img-container">
+                <img src="https://i.ibb.co/SwmwRN9D/IMG-20260306-WA0130.jpg" alt="Monastery">
+            </div>
+            <div class="info">
+                <h2>Monastery</h2>
+                <p class="precio">$89.990 COP</p>
+                <a href="https://wa.me/XXXXXXXXXXX?text=Hola,%20me%20interesa%20la%20Monastery" class="whatsapp-button">Comprar</a>
+            </div>
+        </div>
+    </div>
 
     <script>
-        function openNav() { document.getElementById("mySidenav").style.width = "250px"; }
+        function openNav() { document.getElementById("mySidenav").style.width = "260px"; }
         function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
 
         var music = document.getElementById("bgMusic");
+        var btn = document.getElementById("musicBtn");
         function toggleMusic() {
             if (music.paused) {
                 music.play();
-                document.getElementById("musicBtn").innerHTML = "MUTE";
+                btn.innerHTML = "MUTE";
+                btn.style.background = "#ff4444";
             } else {
                 music.pause();
-                document.getElementById("musicBtn").innerHTML = "PLAY";
+                btn.innerHTML = "PLAY";
+                btn.style.background = "#25d366";
             }
         }
     </script>
